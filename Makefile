@@ -1,24 +1,20 @@
 .PHONY = all dir clean
 
-$(SAI) = sum_array_it.c
-$(SAR) = sum_array_rec.c
-$(SAIO) = sum_array_it.o
-$(SARO) = sum_array_rec.o
-$(PROG) = sum_array
+$(SAC) = sum_array.c
+$(SAO) = sum_array.o
+$(SAH) = sum_array.h
+$(PROGSA) = sum_array
 
-all: clean dir $(PROGSAI) $(PROGSAR)
+all: clean dir $(PROGSA)
 
 dir:
 	mkdir build bin
 
-$(SAIO): $(SAI)
-	gcc -c $< -o $@
+$(SAO): $(SAC) $(SAH)
+	gcc -c $(SAC) -o $@
 
-$(SARO): $(SAR)
-	gcc -c $< -o $@
-
-$(PROG): $(SAIO) $(SARO)
-	gcc -Wall -c $< -o $@
+$(PROG): $(SAO)
+	gcc -Wall $< -o $@
 
 clean:
 	rm -rf build bin
