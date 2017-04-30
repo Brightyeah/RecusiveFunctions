@@ -3,8 +3,8 @@
 SAC = src/sum_array.c
 SAO = build/sum_array.o
 SAH = src/sum_array.h
-MIC = src/main.c
-MIO = build/main.o
+MIC = src/main_sa.c
+MIO = build/main_sa.o
 PROGSA = bin/sum_array
 
 all: clean dir $(PROGSA)
