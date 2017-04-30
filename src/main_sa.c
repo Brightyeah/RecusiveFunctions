@@ -1,6 +1,5 @@
 #include "sum_array.h"
 #include <stdio.h>
-#include <stdlib.h>
 
 int main()
 {
