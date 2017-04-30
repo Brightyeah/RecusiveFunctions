@@ -14,7 +14,14 @@ MFIC = src/main_fi.c
 MFIO = build/main_fi.o
 PROGFI = bin/fibonachchi
 
-all: clean dir $(PROGSA) $(PROGFI)
+NSC = src/number_string.c
+NSO = build/number_string.o
+NSH = src/number_string.h
+MNSC = src/main_ns.c
+MNSO = build/main_ns.o
+PROGNS = bin/number_string
+
+all: clean dir $(PROGNS)
 
 dir:
 	mkdir build
@@ -33,6 +40,13 @@ $(MFIO): $(MFIC)
 	gcc -o $(MFIO) -c $(MFIC)
 $(PROGFI): $(FIO) $(MFIO)
 	gcc -Wall -o $(PROGFI) $(FIO) $(MFIO)
+
+$(NSO): $(NSC) $(NSH)
+	gcc -o $(NSO) -c $(NSC)
+$(MNSO): $(MNSC)
+	gcc -o $(MNSO) -c $(MNSC)
+$(PROGNS): $(NSO) $(MNSO)
+	gcc -Wall -o $(PROGNS) $(NSO) $(MNSO)
 
 clean:
 	rm -rf build bin
