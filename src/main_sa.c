@@ -1,4 +1,4 @@
-#include "sum_array.h"
+#include "recursion.h"
 #include <stdio.h>
 
 int main()
