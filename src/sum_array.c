@@ -1,18 +1,22 @@
 #include "sum_array.h"
 
-int sa_iteration(int *qwerty)
+int sa_iteration(int result, int *qwerty, int count, int max_count)
 {
-    int i = 0, sum = 0;
-    for (; i < (sizeof(qwerty)/sizeof(int)); i++) {
-        sum += qwerty[i];
+    if (count == max_count) {
+        return result;
     }
-    return sum;
+    return sa_iteration(result + qwerty[count], qwerty, count+1, max_count);
 }
-int sa_recursion(int *qwerty, int i, int sum)
+
+int sum_array(int *qwerty, int n)
 {
-    if ( i >= (sizeof(qwerty)/sizeof(int))) {
-        return sum;
+    return sa_iteration(0, qwerty, 0, n);
+}
+
+int sa_recursion(int *qwerty, int i, int max_count)
+{
+    if (i == max_count) {
+        return 0;
     }
-    sum += qwerty[i++];
-    return sa_recursion(qwerty, i, sum);
+    return qwerty[i] + sa_recursion(qwerty, i+1, max_count);
 }
