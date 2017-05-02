@@ -7,5 +7,7 @@ int sa_recursion(int *qwerty, int i, int max_count);
 int fi_iteration(int number, int sum, int n);
 int number_fi(int n);
 int fi_recursion(int n);
-int ns_recursion(char *result, int num, int n, int i);
+int ns_recursion(char *result, int num, int n);
+int plus_recursion(char *result, int num, int n, int i);
+int minus_recursion(char *result, int num, int n, int i);
 #endif

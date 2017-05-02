@@ -44,12 +44,32 @@ int fi_recursion(int n)
     return fi_recursion(n-1) + fi_recursion(n-2);
 }
 
-int ns_recursion(char *result, int num, int n, int i)
+int ns_recursion(char *result, int num, int n)
+{
+    if (num >= 0) {
+        return plus_recursion(result, num, n, 0);
+    } else {
+        return minus_recursion(result, num, n, 0);
+    }
+}
+
+int plus_recursion(char *result, int num, int n, int i)
 {
     if (n == 0) {
         result[i] = '\0';
         return 0;
     }
     result[n-1] = (num % 10) + '0';
-    return ns_recursion(result, num / 10, n-1, i+1);
+    return plus_recursion(result, num / 10, n-1, i+1);
+}
+
+int minus_recursion(char *result, int num, int n, int i)
+{
+    if (n == 0) {
+        result[0] = '-';
+        result[i+1] = '\0';
+        return 0;
+    }
+    result[n] = ((-num) % 10) + '0';
+    return minus_recursion(result, num / 10, n-1, i+1);
 }

@@ -9,7 +9,7 @@ int main()
     scanf("%d %d", &num, &size);
     char *ch;
     ch = malloc(sizeof(char)*size);
-    if (ns_recursion(ch, num, size, 0) == 0) {
+    if (ns_recursion(ch, num, size) == 0) {
         printf("\nRecursion: %s\n", ch);
     }
     free(ch);
